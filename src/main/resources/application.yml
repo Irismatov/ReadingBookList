@@ -15,3 +15,5 @@ server:
 logging:
   file:
     path: D:/ReadingList.log
+amazon:
+  associate-id: habuma-20

@@ -1,9 +1,6 @@
 package uz.jakongir.readinglist.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +11,9 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String reader;
+    @JoinColumn
+    @ManyToOne
+    private Reader reader;
     private String isbn;
     private String title;
     private String author;
