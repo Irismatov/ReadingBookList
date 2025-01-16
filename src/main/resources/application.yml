@@ -1,0 +1,17 @@
+spring:
+  main:
+    banner-mode: off
+  thymeleaf:
+    cache: false
+
+server:
+  port: 8081
+  ssl:
+    key-store: C:\Users\Lokin\Documents\mykeys.jks
+    key-store-password: J@khongir_2016
+    key-password: J@khongir_2016
+
+
+logging:
+  file:
+    path: D:/ReadingList.log
