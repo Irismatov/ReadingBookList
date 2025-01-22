@@ -1,10 +1,13 @@
-FROM ubuntu:latest
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+# Build Stage
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /app
 COPY . .
+RUN mvn clean package -DskipTests
 
+# Runtime Stage
 FROM openjdk:17-jdk-slim
-EXPOSE 8080
-COPY
+WORKDIR /app
+COPY --from=build /app/target/ReadingList-0.0.1-SNAPSHOT.jar app.jar
 
-ENTRYPOINT ["top", "-b"]
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
