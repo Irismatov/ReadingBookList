@@ -5,11 +5,7 @@ spring:
     cache: false
 
 server:
-  port: 8081
-  ssl:
-    key-store: C:\Users\Lokin\Documents\mykeys.jks
-    key-store-password: J@khongir_2016
-    key-password: J@khongir_2016
+  port: 8080
 
 
 logging:

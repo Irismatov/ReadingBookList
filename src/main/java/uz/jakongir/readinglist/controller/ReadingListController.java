@@ -27,19 +27,15 @@ public class ReadingListController {
     private final ReadingListRepository readingListRepository;
 
     @GetMapping
-    public String readersBooks (@PathVariable("reader") Reader reader, Model model) {
-        List<Book> readingList = readingListRepository.findByReader(reader);
-        if (readingList != null) {
-            model.addAttribute("books", readingList);
-            model.addAttribute("reader", reader);
-            model.addAttribute("amazonID", amazonProperties.getAssociateId());
-        }
+    public String readersBooks (Model model) {
+        List<Book> readingList = readingListRepository.findAll();
+        model.addAttribute("books", readingList);
+        model.addAttribute("amazonID", amazonProperties.getAssociateId());
         return "readingList";
     }
 
     @PostMapping
-    public String addToReadingList (Reader reader, Book book) {
-        book.setReader(reader);
+    public String addToReadingList (Book book) {
         readingListRepository.save(book);
         return "redirect:/";
     }
